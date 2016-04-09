@@ -53,10 +53,16 @@ export class RemoveOperation implements IOperation<string> {
         }
       case 'remove':
         if (this.index + this.length <= op.index) {
+          // the opposed operation will be applied at greater position than this operation
+          // ...[this]...[opposed]
           return this;
         } else if (op.index <= this.index && this.index + this.length <= op.index + op.length ) {
+          // the opposed operation covers whole text that this operation try to remove
+          // ...[opposed ... [this] ...]...
           return new NoOperation();
         } else {
+          // otherwise, the opposed operation eliminates the range of removal of this operation
+          // ...[this ... [opposed] ...]...
           const intersect = this.length
             - Math.max(0, op.index - this.index)
             - Math.max(0, (this.index + this.length) - (op.index + op.length));

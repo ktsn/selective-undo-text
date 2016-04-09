@@ -1,0 +1,22 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "noImplicitAny": true
+  },
+  "filesGlob": [
+    "src/**/*.ts"
+  ],
+  "files": [
+    "src/history.ts",
+    "src/index.ts",
+    "src/interfaces/operation.ts",
+    "src/operations/add-operation.ts",
+    "src/operations/group-operation.ts",
+    "src/operations/no-operation.ts",
+    "src/operations/remove-operation.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
+}

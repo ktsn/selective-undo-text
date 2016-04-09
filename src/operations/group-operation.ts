@@ -9,6 +9,10 @@ export class GroupOperation implements IOperation<string> {
     this.operations = operations;
   }
 
+  public description() : string {
+    return this.operations.map(op => op.description).join('\n');
+  }
+
   public apply(target: string) : string {
     return this.operations.reduce((memo: string, op: IOperation<string>) => {
       return op.apply(memo);

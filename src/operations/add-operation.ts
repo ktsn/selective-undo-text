@@ -10,6 +10,10 @@ export class AddOperation implements IOperation<string> {
     this.length = chunk.length;
   }
 
+  public description() : string {
+    return `Add "${this.chunk}" at ${this.index}`;
+  }
+
   public apply(target: string) : string {
     const pre = target.slice(0, this.index);
     const suf = target.slice(this.index);

@@ -7,6 +7,10 @@ export class NoOperation implements IOperation<string> {
     return target;
   }
 
+  public description() : string {
+    return 'No operation';
+  }
+
   public inverse() : IOperation<string> {
     return this;
   }

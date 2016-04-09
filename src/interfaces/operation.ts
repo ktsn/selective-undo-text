@@ -3,6 +3,7 @@ export interface IOperation<T> {
   index?: number;
   length?: number;
 
+  description() : string;
   apply(target: T) : T;
   inverse() : IOperation<T>;
   transform(op: IOperation<T>) : IOperation<T>;

@@ -12,6 +12,10 @@ export class RemoveOperation implements IOperation<string> {
 
   }
 
+  public description() : string {
+    return `Remove from ${this.index} to ${this.index + this.length}`;
+  }
+
   public apply(target: string) : string {
     const pre = target.slice(0, this.index);
     const suf = target.slice(this.index + this.length);

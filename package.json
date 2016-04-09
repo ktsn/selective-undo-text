@@ -1,10 +1,11 @@
 {
-  "name": "template-ts",
-  "version": "1.0.0",
+  "name": "selective-undo-text",
+  "version": "0.1.0",
   "author": "katashin",
   "private": "true",
   "license": "MIT",
-  "homepage": "https://github.com/ktsn/template-ts",
+  "homepage": "https://github.com/ktsn/selective-undo-text",
+  "main": "dist/selective-undo-text.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "gulp build",

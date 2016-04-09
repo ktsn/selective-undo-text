@@ -1,6 +1,6 @@
-# template-ts
+# selective-undo-text
 
-A project template for an TypeScript library.
+A Selective Undo library for text editing.
 
 ## License
 

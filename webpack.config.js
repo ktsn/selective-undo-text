@@ -6,8 +6,7 @@ module.exports = {
   entry: './index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    library: 'Lib',
+    filename: 'selective-undo-text.js',
     libraryTarget: 'umd'
   },
   resolve: {

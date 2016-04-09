@@ -10,7 +10,7 @@ export class GroupOperation implements IOperation<string> {
   }
 
   public description() : string {
-    return this.operations.map(op => op.description).join('\n');
+    return this.operations.map(op => op.description()).join('\n');
   }
 
   public apply(target: string) : string {

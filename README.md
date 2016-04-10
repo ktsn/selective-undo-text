@@ -2,6 +2,10 @@
 
 A Selective Undo library for text editing.
 
+## Demo
+
+http://codepen.io/ktsn/pen/qZxdaY
+
 ## Usage
 
 ```js

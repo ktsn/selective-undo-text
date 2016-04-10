@@ -63,9 +63,12 @@ export class RemoveOperation implements IOperation<string> {
         } else {
           // otherwise, the opposed operation eliminates the range of removal of this operation
           // ...[this ... [opposed] ...]...
-          const intersect = this.length
-            - Math.max(0, op.index - this.index)
-            - Math.max(0, (this.index + this.length) - (op.index + op.length));
+          const intersect = Math.max(
+            0,
+            this.length
+              - Math.max(0, op.index - this.index)
+              - Math.max(0, (this.index + this.length) - (op.index + op.length))
+          );
           return new RemoveOperation(
             this.index - (op.length - intersect),
             this.length - intersect

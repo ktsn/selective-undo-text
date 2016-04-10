@@ -102,5 +102,14 @@ describe('RemoveOperation', () => {
 
       assert(actual === 'tt');
     });
+
+    it('does not change the operation length if the operations do not intersect each other', () => {
+      const orig = new RemoveOperation(4, 1);
+      const opposed = new RemoveOperation(1, 1);
+      const trans = orig.transform(opposed);
+      const actual = trans.apply(opposed.apply('abcdefg'));
+
+      assert(actual === 'acdfg');
+    });
   });
 });

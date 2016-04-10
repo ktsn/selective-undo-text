@@ -8,7 +8,7 @@
     "src/**/*.ts"
   ],
   "files": [
-    "src/history.ts",
+    "src/buffer.ts",
     "src/index.ts",
     "src/interfaces/operation.ts",
     "src/operations/add-operation.ts",

@@ -2,7 +2,7 @@ import { IOperation } from './interfaces/operation';
 import { AddOperation } from './operations/add-operation';
 import { RemoveOperation } from './operations/remove-operation';
 
-export class History {
+export class Buffer {
   private operations: IOperation<string>[] = [];
 
   constructor(public text: string = '') {

@@ -1,10 +1,23 @@
 {
   "name": "selective-undo-text",
   "version": "0.1.0",
+  "description": "A Selective Undo library for text editing",
+  "keywords": [
+    "selective",
+    "undo",
+    "redo",
+    "text",
+    "editing",
+    "operation"
+  ],
   "author": "katashin",
-  "private": "true",
   "license": "MIT",
   "homepage": "https://github.com/ktsn/selective-undo-text",
+  "bugs": "https://github.com/ktsn/selective-undo-text/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ktsn/selective-undo-text.git"
+  },
   "main": "dist/selective-undo-text.js",
   "scripts": {
     "prepublish": "npm run build",

@@ -20,7 +20,7 @@ export class GroupOperation implements IOperation<string> {
   }
 
   public inverse() : IOperation<string> {
-    const inversed = this.operations.reverse().map((op: IOperation<string>) => {
+    const inversed = this.operations.concat().reverse().map((op: IOperation<string>) => {
       return op.inverse();
     });
 

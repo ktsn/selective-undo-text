@@ -49,7 +49,7 @@ export class RemoveOperation implements IOperation<string> {
           // ...[remove][add][remove]...
           const pre = new RemoveOperation(this.index, op.index - this.index);
           const post = new RemoveOperation(op.index + op.length, this.length - (op.index - this.index));
-          return new GroupOperation(post, pre);
+          return new GroupOperation([post, pre]);
         }
       case 'remove':
         if (this.index + this.length <= op.index) {

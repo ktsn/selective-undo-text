@@ -5,7 +5,7 @@ export class GroupOperation implements IOperation<string> {
 
   public operations: IOperation<string>[];
 
-  constructor(...operations: IOperation<string>[]) {
+  constructor(operations: IOperation<string>[]) {
     this.operations = operations;
   }
 
@@ -24,7 +24,7 @@ export class GroupOperation implements IOperation<string> {
       return op.inverse();
     });
 
-    return new GroupOperation(...inversed);
+    return new GroupOperation(inversed);
   }
 
   public transform(op: IOperation<string>) : IOperation<string> {
@@ -32,6 +32,6 @@ export class GroupOperation implements IOperation<string> {
     for (let i = this.operations.length - 1; i >= 0; --i) {
       ops.push(this.operations[i].transform(op));
     }
-    return new GroupOperation(...ops);
+    return new GroupOperation(ops);
   }
 }

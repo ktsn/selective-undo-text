@@ -1,10 +1,10 @@
 import * as assert from 'power-assert';
-import { GroupOperation } from '../../src/operations/group-operation';
+import { SequenceOperation } from '../../src/operations/sequence-operation';
 import { AddOperation } from '../../src/operations/add-operation';
 
-describe('GroupOperation', () => {
+describe('SequenceOperation', () => {
   it('applies operations processing left to right of text', () => {
-    const op = new GroupOperation([
+    const op = new SequenceOperation([
       new AddOperation(2, '*1st*'),
       new AddOperation(8, '*2nd*')
     ]);
@@ -14,7 +14,7 @@ describe('GroupOperation', () => {
   });
 
   it('applies operations processing right to left of text', () => {
-    const op = new GroupOperation([
+    const op = new SequenceOperation([
       new AddOperation(3, '*1st*'),
       new AddOperation(2, '*2nd*')
     ]);
@@ -24,7 +24,7 @@ describe('GroupOperation', () => {
   });
 
   it('inverts whole operations', () => {
-    const op = new GroupOperation([
+    const op = new SequenceOperation([
       new AddOperation(2, '*1st*'),
       new AddOperation(8, '*2nd*')
     ]);

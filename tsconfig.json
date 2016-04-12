@@ -12,9 +12,9 @@
     "src/index.ts",
     "src/interfaces/operation.ts",
     "src/operations/add-operation.ts",
-    "src/operations/group-operation.ts",
     "src/operations/no-operation.ts",
-    "src/operations/remove-operation.ts"
+    "src/operations/remove-operation.ts",
+    "src/operations/sequence-operation.ts"
   ],
   "atom": {
     "rewriteTsconfig": true

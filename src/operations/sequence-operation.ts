@@ -1,7 +1,7 @@
 import { IOperation } from '../interfaces/operation';
 
-export class GroupOperation implements IOperation<string> {
-  public type: string = 'group';
+export class SequenceOperation implements IOperation<string> {
+  public type: string = 'sequence';
 
   constructor(public operations: IOperation<string>[]) {
   }
@@ -21,7 +21,7 @@ export class GroupOperation implements IOperation<string> {
       return op.inverse();
     });
 
-    return new GroupOperation(inversed);
+    return new SequenceOperation(inversed);
   }
 
   public transform(op: IOperation<string>) : IOperation<string> {
@@ -29,6 +29,6 @@ export class GroupOperation implements IOperation<string> {
     for (let i = this.operations.length - 1; i >= 0; --i) {
       ops.push(this.operations[i].transform(op));
     }
-    return new GroupOperation(ops);
+    return new SequenceOperation(ops);
   }
 }

@@ -42,8 +42,8 @@ export class AddOperation implements IOperation<string> {
           return this;
         }
       case 'sequence':
-        const group: SequenceOperation = <SequenceOperation>op;
-        return group.operations.reduce((memo, opposed) => memo.transform(opposed), this);
+        const sequence: SequenceOperation = <SequenceOperation>op;
+        return sequence.operations.reduce((memo, opposed) => memo.transform(opposed), this);
       case 'noop':
         return this;
       default:

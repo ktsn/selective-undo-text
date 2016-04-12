@@ -1,7 +1,7 @@
 import { IOperation } from '../interfaces/operation';
 import { AddOperation } from './add-operation';
 import { NoOperation } from './no-operation';
-import { GroupOperation } from './group-operation';
+import { SequenceOperation } from './sequence-operation';
 
 export class RemoveOperation implements IOperation<string> {
   public type: string = 'remove';
@@ -49,7 +49,7 @@ export class RemoveOperation implements IOperation<string> {
           // ...[remove][add][remove]...
           const pre = new RemoveOperation(this.index, op.index - this.index);
           const post = new RemoveOperation(op.index + op.length, this.length - (op.index - this.index));
-          return new GroupOperation(post, pre);
+          return new SequenceOperation([post, pre]);
         }
       case 'remove':
         if (this.index + this.length <= op.index) {
@@ -74,9 +74,9 @@ export class RemoveOperation implements IOperation<string> {
             this.length - intersect
           );
         }
-      case 'group':
-        const group: GroupOperation = <GroupOperation>op;
-        return group.operations.reduce((memo, opposed) => memo.transform(opposed), this);
+      case 'sequence':
+        const sequence: SequenceOperation = <SequenceOperation>op;
+        return sequence.operations.reduce((memo, opposed) => memo.transform(opposed), this);
       case 'noop':
         return this;
       default:

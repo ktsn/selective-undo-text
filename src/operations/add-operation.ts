@@ -1,6 +1,6 @@
 import { IOperation } from '../interfaces/operation';
 import { RemoveOperation } from './remove-operation';
-import { GroupOperation } from './group-operation';
+import { SequenceOperation } from './sequence-operation';
 
 export class AddOperation implements IOperation<string> {
   public type: string = 'add';
@@ -41,9 +41,9 @@ export class AddOperation implements IOperation<string> {
         } else {
           return this;
         }
-      case 'group':
-        const group: GroupOperation = <GroupOperation>op;
-        return group.operations.reduce((memo, opposed) => memo.transform(opposed), this);
+      case 'sequence':
+        const sequence: SequenceOperation = <SequenceOperation>op;
+        return sequence.operations.reduce((memo, opposed) => memo.transform(opposed), this);
       case 'noop':
         return this;
       default:

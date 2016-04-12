@@ -3,10 +3,7 @@ import { IOperation } from '../interfaces/operation';
 export class GroupOperation implements IOperation<string> {
   public type: string = 'group';
 
-  public operations: IOperation<string>[];
-
-  constructor(operations: IOperation<string>[]) {
-    this.operations = operations;
+  constructor(public operations: IOperation<string>[]) {
   }
 
   public description() : string {

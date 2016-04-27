@@ -6,7 +6,7 @@ describe('SequenceOperation', () => {
   it('applies operations processing left to right of text', () => {
     const op = new SequenceOperation([
       new AddOperation(2, '*1st*'),
-      new AddOperation(8, '*2nd*')
+      new AddOperation(3, '*2nd*')
     ]);
 
     const actual = op.apply('Test');
@@ -26,7 +26,7 @@ describe('SequenceOperation', () => {
   it('inverts whole operations', () => {
     const op = new SequenceOperation([
       new AddOperation(2, '*1st*'),
-      new AddOperation(8, '*2nd*')
+      new AddOperation(3, '*2nd*')
     ]);
     const inverse = op.inverse();
 

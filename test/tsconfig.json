@@ -1,0 +1,39 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "noImplicitAny": true,
+    "sourceMap": true
+  },
+  "filesGlob": [
+    "**/*.ts",
+    "../src/**/*.ts",
+    "../typings/**/*.ts"
+  ],
+  "files": [
+    "buffer.ts",
+    "operations/add-operation.ts",
+    "operations/remove-operation.ts",
+    "operations/sequence-operation.ts",
+    "../src/buffer.ts",
+    "../src/index.ts",
+    "../src/interfaces/operation.ts",
+    "../src/operations/add-operation.ts",
+    "../src/operations/no-operation.ts",
+    "../src/operations/remove-operation.ts",
+    "../src/operations/sequence-operation.ts",
+    "../typings/browser.d.ts",
+    "../typings/browser/ambient/empower/index.d.ts",
+    "../typings/browser/ambient/mocha/index.d.ts",
+    "../typings/browser/ambient/power-assert-formatter/index.d.ts",
+    "../typings/browser/ambient/power-assert/index.d.ts",
+    "../typings/main.d.ts",
+    "../typings/main/ambient/empower/index.d.ts",
+    "../typings/main/ambient/mocha/index.d.ts",
+    "../typings/main/ambient/power-assert-formatter/index.d.ts",
+    "../typings/main/ambient/power-assert/index.d.ts"
+  ],
+  "atom": {
+    "rewriteTsconfig": true
+  }
+}

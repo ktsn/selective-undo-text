@@ -11,15 +11,11 @@ export class SequenceOperation implements IOperation<string> {
   }
 
   public apply(target: string) : string {
-    return this.operations.reduce((memo: string, op: IOperation<string>) => {
-      return op.apply(memo);
-    }, target);
+    return applyImpl(target, this.operations);
   }
 
   public inverse() : IOperation<string> {
-    const inversed = this.operations.concat().reverse().map((op: IOperation<string>) => {
-      return op.inverse();
-    });
+    const inversed = inverseImpl([], this.operations);
 
     return new SequenceOperation(inversed);
   }
@@ -31,4 +27,14 @@ export class SequenceOperation implements IOperation<string> {
     }
     return new SequenceOperation(ops);
   }
+}
+
+function applyImpl(target: string, [op, ...ops]: IOperation<string>[]) : string {
+  if (!op) return target;
+  return applyImpl(op.apply(target), ops.map(o => o.transform(op)));
+}
+
+function inverseImpl(acc: IOperation<string>[], [op, ...ops]: IOperation<string>[]) : IOperation<string>[] {
+  if (!op) return acc;
+  return inverseImpl([op.inverse()].concat(acc), ops.map(o => o.transform(op)));
 }

@@ -15,6 +15,7 @@ module.exports = {
   },
   watch: true,
   debug: true,
+  devtool: 'source-map',
   module: {
     loaders: [
       { test: /\.ts$/, loader: 'webpack-espower!ts' },

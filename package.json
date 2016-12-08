@@ -1,6 +1,6 @@
 {
   "name": "selective-undo-text",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A Selective Undo library for text editing",
   "keywords": [
     "selective",

@@ -25,6 +25,8 @@
     "test": "gulp test"
   },
   "devDependencies": {
+    "@types/mocha": "^2.2.33",
+    "@types/power-assert": "^1.4.29",
     "del": "^2.1.0",
     "glob": "^6.0.4",
     "gulp": "^3.9.0",

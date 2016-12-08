@@ -29,6 +29,8 @@
     "build:minify": "uglifyjs dist/selective-undo-text.js -o dist/selective-undo-text.min.js -mc warnings=false --comments",
     "build:test": "webpack --config webpack.config.js",
     "watch:test": "npm run build:test -- -w",
+    "lint": "tslint src/**/*.ts test/**/*.ts",
+    "lint:fix": "npm run lint -- --fix",
     "test": "npm run build:test && testem ci --launch PhantomJS"
   },
   "devDependencies": {
@@ -39,7 +41,8 @@
     "power-assert": "^1.2.0",
     "testem": "^0.9.11",
     "ts-loader": "^0.8.1",
-    "tslint": "^3.6.0",
+    "tslint": "^4.0.2",
+    "tslint-config-ktsn": "^2.0.0",
     "typescript": "^2.1.4",
     "uglifyjs": "^2.4.10",
     "webpack": "^1.12.9",

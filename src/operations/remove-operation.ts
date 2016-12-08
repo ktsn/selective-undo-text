@@ -1,86 +1,86 @@
-import { IOperation } from '../interfaces/operation';
-import { AddOperation } from './add-operation';
-import { NoOperation } from './no-operation';
-import { SequenceOperation } from './sequence-operation';
+import { Operation } from '../interfaces/operation'
+import { AddOperation } from './add-operation'
+import { NoOperation } from './no-operation'
+import { SequenceOperation } from './sequence-operation'
 
-export class RemoveOperation implements IOperation<string> {
-  public type: 'remove' = 'remove';
+export class RemoveOperation implements Operation<string> {
+  public type: 'remove' = 'remove'
 
-  private chunk: string | null = null;
+  private chunk: string | null = null
 
   constructor(public index: number, public length: number) {
 
   }
 
-  public description() : string {
-    return `Remove from ${this.index} to ${this.index + this.length}`;
+  public description(): string {
+    return `Remove from ${this.index} to ${this.index + this.length}`
   }
 
-  public apply(target: string) : string {
-    const pre = target.slice(0, this.index);
-    const suf = target.slice(this.index + this.length);
+  public apply(target: string): string {
+    const pre = target.slice(0, this.index)
+    const suf = target.slice(this.index + this.length)
 
-    this.chunk = target.substr(this.index, this.length);
+    this.chunk = target.substr(this.index, this.length)
 
-    return [pre, suf].join('');
+    return [pre, suf].join('')
   }
 
-  public inverse() : IOperation<string> {
+  public inverse(): Operation<string> {
     if (this.chunk === null) {
-      throw new Error('The RemoveOperation instance is ambiguous to create an inverse operation');
+      throw new Error('The RemoveOperation instance is ambiguous to create an inverse operation')
     }
 
-    return new AddOperation(this.index, this.chunk);
+    return new AddOperation(this.index, this.chunk)
   }
 
-  public transform(op: IOperation<string>) : IOperation<string> {
+  public transform(op: Operation<string>): Operation<string> {
     switch (op.type) {
       case 'add':
         if (this.index + this.length <= op.index) {
           // the add-operation will be applied at greater position than this operation
           // ...[remove]...[add]
-          return this;
+          return this
         } else if (op.index <= this.index) {
           // the add-operation will be applied at less position than this operation
           // ...[add]...[remove]
-          return new RemoveOperation(this.index + op.length, this.length);
+          return new RemoveOperation(this.index + op.length, this.length)
         } else {
           // the add-operation will be applied in the removing text
           // ...[remove][add][remove]...
-          const pre = new RemoveOperation(this.index, op.index - this.index);
-          const post = new RemoveOperation(op.index + op.length, this.length - (op.index - this.index));
-          return new SequenceOperation([post, pre]);
+          const pre = new RemoveOperation(this.index, op.index - this.index)
+          const post = new RemoveOperation(op.index + op.length, this.length - (op.index - this.index))
+          return new SequenceOperation([post, pre])
         }
       case 'remove':
         if (this.index + this.length <= op.index) {
           // the opposed operation will be applied at greater position than this operation
           // ...[this]...[opposed]
-          return this;
-        } else if (op.index <= this.index && this.index + this.length <= op.index + op.length ) {
+          return this
+        } else if (op.index <= this.index && this.index + this.length <= op.index + op.length) {
           // the opposed operation covers whole text that this operation try to remove
           // ...[opposed ... [this] ...]...
-          return new NoOperation();
+          return new NoOperation()
         } else {
           // otherwise, the opposed operation eliminates the range of removal of this operation
           // ...[this ... [opposed] ...]...
           const intersect = Math.max(
             0,
             this.length
-              - Math.max(0, op.index - this.index)
-              - Math.max(0, (this.index + this.length) - (op.index + op.length))
-          );
+            - Math.max(0, op.index - this.index)
+            - Math.max(0, (this.index + this.length) - (op.index + op.length))
+          )
           return new RemoveOperation(
             this.index - (op.length - intersect),
             this.length - intersect
-          );
+          )
         }
       case 'sequence':
-        const sequence: SequenceOperation = <SequenceOperation>op;
-        return sequence.operations.reduce((memo, opposed) => memo.transform(opposed), this);
+        const sequence: SequenceOperation = op as SequenceOperation
+        return sequence.operations.reduce((memo, opposed) => memo.transform(opposed), this)
       case 'noop':
-        return this;
+        return this
       default:
-        throw new Error('Unexpected operation type: ' + op.type);
+        throw new Error('Unexpected operation type: ' + op.type)
     }
   }
 }

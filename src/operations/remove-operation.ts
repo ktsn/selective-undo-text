@@ -4,9 +4,9 @@ import { NoOperation } from './no-operation';
 import { SequenceOperation } from './sequence-operation';
 
 export class RemoveOperation implements IOperation<string> {
-  public type: string = 'remove';
+  public type: 'remove' = 'remove';
 
-  private chunk: string = null;
+  private chunk: string | null = null;
 
   constructor(public index: number, public length: number) {
 

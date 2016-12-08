@@ -1,7 +1,7 @@
 import { IOperation } from '../interfaces/operation';
 
 export class NoOperation implements IOperation<string> {
-  public type: string = 'noop';
+  public type: 'noop' = 'noop';
 
   public apply(target: string) : string {
     return target;

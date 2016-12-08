@@ -1,5 +1,5 @@
 export interface IOperation<T> {
-  type: string;
+  type: 'add' | 'remove' | 'sequence' | 'noop';
   index?: number;
   length?: number;
 

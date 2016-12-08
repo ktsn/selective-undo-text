@@ -2,22 +2,17 @@
   "compileOnSave": false,
   "compilerOptions": {
     "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "outDir": "lib",
     "noImplicitAny": true,
-    "sourceMap": true
+    "noImplicitThis": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "declaration": true
   },
-  "filesGlob": [
+  "include": [
     "src/**/*.ts"
-  ],
-  "files": [
-    "src/buffer.ts",
-    "src/index.ts",
-    "src/interfaces/operation.ts",
-    "src/operations/add-operation.ts",
-    "src/operations/no-operation.ts",
-    "src/operations/remove-operation.ts",
-    "src/operations/sequence-operation.ts"
-  ],
-  "atom": {
-    "rewriteTsconfig": true
-  }
+  ]
 }

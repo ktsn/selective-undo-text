@@ -1,7 +1,7 @@
 import { IOperation } from '../interfaces/operation';
 
 export class SequenceOperation implements IOperation<string> {
-  public type: string = 'sequence';
+  public type: 'sequence' = 'sequence';
 
   constructor(public operations: IOperation<string>[]) {
   }

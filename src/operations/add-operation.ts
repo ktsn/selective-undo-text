@@ -3,7 +3,7 @@ import { RemoveOperation } from './remove-operation';
 import { SequenceOperation } from './sequence-operation';
 
 export class AddOperation implements IOperation<string> {
-  public type: string = 'add';
+  public type: 'add' = 'add';
   public length: number;
 
   constructor(public index: number, private chunk: string) {
@@ -35,7 +35,7 @@ export class AddOperation implements IOperation<string> {
       case 'remove':
         if (this.index > op.index) {
           return new AddOperation(
-            Math.min(op.length, this.index - op.index),
+            Math.min(op.length!, this.index - op.index),
             this.chunk
           );
         } else {

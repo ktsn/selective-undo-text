@@ -41,16 +41,16 @@
   "devDependencies": {
     "@types/mocha": "^2.2.33",
     "@types/power-assert": "^1.4.29",
-    "glob": "^6.0.4",
+    "glob": "^7.1.1",
     "json-loader": "^0.5.4",
-    "power-assert": "^1.2.0",
-    "testem": "^0.9.11",
-    "ts-loader": "^0.8.1",
+    "power-assert": "^1.4.2",
+    "testem": "^1.13.0",
+    "ts-loader": "^1.3.0",
     "tslint": "^4.0.2",
     "tslint-config-ktsn": "^2.0.0",
     "typescript": "^2.1.4",
     "uglifyjs": "^2.4.10",
-    "webpack": "^1.12.9",
+    "webpack": "^1.14.0",
     "webpack-espower-loader": "^1.0.1"
   }
 }

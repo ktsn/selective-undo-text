@@ -1,21 +1,21 @@
-import { IOperation } from '../interfaces/operation';
+import { Operation } from '../interfaces/operation'
 
-export class NoOperation implements IOperation<string> {
-  public type: string = 'noop';
+export class NoOperation implements Operation<string> {
+  public type: 'noop' = 'noop'
 
-  public apply(target: string) : string {
-    return target;
+  public apply(target: string): string {
+    return target
   }
 
-  public description() : string {
-    return 'No operation';
+  public description(): string {
+    return 'No operation'
   }
 
-  public inverse() : IOperation<string> {
-    return this;
+  public inverse(): Operation<string> {
+    return this
   }
 
-  public transform(op: IOperation<string>) : IOperation<string> {
-    return this;
+  public transform(op: Operation<string>): Operation<string> {
+    return this
   }
 }

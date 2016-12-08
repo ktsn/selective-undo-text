@@ -1,21 +1,22 @@
-/* eslint-env node */
-const path = require('path');
+const path = require('path')
+const glob = require('glob')
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
-  entry: './index.ts',
+  context: path.resolve(__dirname),
+  entry: glob.sync('./test/**/*.ts'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'selective-undo-text.js',
-    libraryTarget: 'umd'
+    path: path.resolve(__dirname, '.tmp'),
+    filename: 'test.js'
   },
   resolve: {
     modulesDirectories: ['node_modules'],
-    extensions: ['', '.ts', '.js']
+    extensions: ['', '.ts', '.js', '.json']
   },
+  devtool: 'source-map',
   module: {
     loaders: [
-      { test: /\.ts$/, loader: 'ts-loader' }
+      { test: /\.ts$/, loader: 'webpack-espower!ts' },
+      { test: /\.json$/, loader: 'json-loader' }
     ]
   }
-};
+}

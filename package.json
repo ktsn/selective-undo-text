@@ -10,6 +10,10 @@
     "editing",
     "operation"
   ],
+  "files": [
+    "dist",
+    "lib"
+  ],
   "author": "katashin",
   "license": "MIT",
   "homepage": "https://github.com/ktsn/selective-undo-text",
@@ -18,7 +22,8 @@
     "type": "git",
     "url": "https://github.com/ktsn/selective-undo-text.git"
   },
-  "main": "dist/selective-undo-text.js",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
   "scripts": {
     "prepublish": "npm t && npm run clean && npm run build",
     "clean": "rm -rf .tmp dist lib",
